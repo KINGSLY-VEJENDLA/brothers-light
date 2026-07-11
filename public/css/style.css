@@ -1,0 +1,47 @@
+@import url("navbar.css");
+@import url("hero.css");
+@import url("about.css");
+@import url("services.css");
+@import url("contact.css");
+@import url("footer.css");
+@import url("responsive.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:#FCF6F5;
+
+    color:#202020;
+
+    overflow-x:hidden;
+
+}
+
+.container{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+section{
+
+    padding:120px 0;
+
+}

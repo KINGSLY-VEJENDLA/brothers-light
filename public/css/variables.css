@@ -1,0 +1,15 @@
+:root{
+
+    --primary:#990011;
+    --background:#FCF6F5;
+    --dark:#161616;
+    --gray:#666666;
+    --white:#ffffff;
+
+    --container:1400px;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:12px;
+
+}

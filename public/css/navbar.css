@@ -1,0 +1,125 @@
+/*=========================
+NAVBAR
+=========================*/
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    background:rgba(255,255,255,.97);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(0,0,0,.05);
+
+    transition:.4s;
+
+}
+
+.nav-container{
+
+    height:75px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo img{
+
+    height:62px;
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    list-style:none;
+
+    gap:45px;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.nav-menu a{
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-weight:600;
+
+    position:relative;
+
+    transition:.35s;
+
+}
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-10px;
+
+    width:0;
+
+    height:2px;
+
+    background:#990011;
+
+    transition:.35s;
+
+}
+
+.nav-menu a:hover{
+
+    color:#990011;
+
+}
+
+.nav-menu a:hover::after{
+
+    width:100%;
+
+}
+
+.quote-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:10px 22px;
+    font-size:14px;
+    font-weight:600;
+
+    color:white;
+    background:#e50815;
+
+    border-radius:6px;
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.quote-btn:hover{
+    background:#b9000c;
+    color:white;
+}
+
