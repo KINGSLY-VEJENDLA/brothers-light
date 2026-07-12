@@ -198,18 +198,6 @@ MOBILE (max-width:768px)
 
 /* Menu */
 
-.nav-menu{
-
-    display:flex;
-
-    flex-direction:row;
-
-    gap:18px;
-
-    align-items:center;
-
-}
-
 
 
 .nav-menu a{
@@ -703,5 +691,43 @@ SMALL MOBILE (max-width:480px)
 
 }
 
+
+}
+
+@media(max-width:991px){
+
+.menu-toggle{
+    display:flex;
+}
+
+.nav-menu{
+
+    position:fixed;
+    top:75px;
+    left:-100%;
+
+    width:100%;
+    height:calc(100vh - 75px);
+
+    background:#fff;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+
+    gap:25px;
+
+    padding-top:40px;
+
+    transition:0.4s;
+
+}
+
+.nav-menu.active{
+
+    left:0;
+
+}
 
 }

@@ -1,4 +1,5 @@
 // 1. Import packages
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
@@ -55,9 +56,8 @@ app.post("/send-message", async (req,res)=>{
 
         auth:{
 
-            user:"info@brotherslight.in",
-
-            pass:"BL!@#$1234"
+            user: process.env.EMAIL_USER,
+pass: process.env.EMAIL_PASS
 
         }
 
@@ -119,9 +119,8 @@ app.post("/send-message", async (req,res)=>{
 
 // 8. Start server (keep this at the bottom)
 
-app.listen(3000, ()=>{
+const PORT = process.env.PORT || 3000;
 
-    console.log("🚀 Server Running");
-    console.log("👉 http://localhost:3000");
-
+app.listen(PORT, () => {
+    console.log(`🚀 Server Running on Port ${PORT}`);
 });

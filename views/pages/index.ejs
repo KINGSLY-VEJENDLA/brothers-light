@@ -28,37 +28,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <body>
 
-<nav class="navbar">
+<header class="navbar">
 
     <div class="container nav-container">
 
         <a href="/" class="logo">
-
             <img src="/images/logo-horizontal.png" alt="Brothers Light">
-
         </a>
 
-        <ul class="nav-menu">
+        <!-- Hamburger -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
+        <ul class="nav-menu" id="navMenu">
             <li><a href="#">Home</a></li>
-
             <li><a href="#about">About</a></li>
-
             <li><a href="#services">Services</a></li>
-
             <li><a href="#contact">Contact</a></li>
 
+            <li>
+                <a href="#contact" class="quote-btn">
+                    Get Quote
+                </a>
+            </li>
         </ul>
-
-        <a href="#contact" class="quote-btn">
-
-            Get Quote
-
-        </a>
 
     </div>
 
-</nav>
+</header>
 <section class="hero">
 
     <!-- Background Image -->
@@ -515,8 +515,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 
 </section>
-
-<script src="/js/main.js"></script>
 
 <footer class="footer">
 

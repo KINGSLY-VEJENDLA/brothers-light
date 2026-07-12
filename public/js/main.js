@@ -67,3 +67,24 @@ navbar.style.boxShadow="none";
 }
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    // Open / Close Menu
+    menuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+    });
+
+    // Close menu after clicking a link
+    document.querySelectorAll(".nav-menu a").forEach(link => {
+
+        link.addEventListener("click", function () {
+            navMenu.classList.remove("active");
+        });
+
+    });
+
+});

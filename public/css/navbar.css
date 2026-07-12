@@ -53,6 +53,9 @@ NAVBAR
     padding:0;
 
 }
+.nav-menu.active{
+    left:0;
+}
 
 .nav-menu a{
 
@@ -123,3 +126,19 @@ NAVBAR
     color:white;
 }
 
+/* Hamburger */
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:5px;
+}
+
+.menu-toggle span{
+    width:28px;
+    height:3px;
+    background:#111;
+    border-radius:10px;
+    transition:.3s;
+}
