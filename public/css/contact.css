@@ -170,3 +170,74 @@
     background:#b80612;
 
 }
+
+/*=========================
+SECURITY VERIFICATION
+=========================*/
+
+.security-box{
+
+    margin:25px 0;
+
+}
+
+.security-header{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:20px;
+    font-weight:700;
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+.security-header i{
+
+    color:#555;
+    font-size:20px;
+
+}
+
+.security-header .required{
+
+    color:#e50815;
+
+}
+
+.turnstile-wrapper{
+
+    background:#f8f8f8;
+
+    border:1px solid #dddddd;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:110px;
+
+}
+
+.security-note{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#666;
+
+    line-height:1.6;
+
+}

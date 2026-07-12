@@ -24,6 +24,13 @@ HERO
     object-fit:cover;
     animation:heroZoom 18s ease-in-out infinite alternate;
 }
+.desktop-banner{
+    display:block;
+}
+
+.mobile-banner{
+    display:none;
+}
 
 /* Dark Overlay */
 

@@ -731,3 +731,38 @@ SMALL MOBILE (max-width:480px)
 }
 
 }
+@media (max-width:991px){
+
+    .desktop-banner{
+        display:none;
+    }
+
+    .mobile-banner{
+        display:block;
+    }
+
+}
+
+@media(max-width:768px){
+
+.turnstile-wrapper{
+
+    padding:15px;
+
+}
+
+.security-header{
+
+    font-size:18px;
+
+}
+
+}
+@media(max-width:768px){
+
+.footer-bottom{
+    flex-direction:column;
+    text-align:center;
+}
+
+}

@@ -3,142 +3,160 @@ NAVBAR
 =========================*/
 
 .navbar{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:999;
-
-    background:rgba(255,255,255,.97);
-
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid rgba(0,0,0,.05);
-
-    transition:.4s;
-
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    transition: .4s;
 }
 
 .nav-container{
-
-    height:75px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo img{
-
-    height:62px;
-
+    height: 62px;
 }
+
+/*=========================
+DESKTOP MENU
+=========================*/
 
 .nav-menu{
-
-    display:flex;
-
-    align-items:center;
-
-    list-style:none;
-
-    gap:45px;
-
-    margin:0;
-
-    padding:0;
-
-}
-.nav-menu.active{
-    left:0;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 45px;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-menu a{
+/* Normal Links */
 
-    text-decoration:none;
-
-    color:#222;
-
-    font-weight:600;
-
-    position:relative;
-
-    transition:.35s;
-
+.nav-menu li{
+    list-style: none;
 }
 
-.nav-menu a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:-10px;
-
-    width:0;
-
-    height:2px;
-
-    background:#990011;
-
-    transition:.35s;
-
+.nav-menu li a:not(.quote-btn){
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    position: relative;
+    transition: .35s;
 }
 
-.nav-menu a:hover{
-
-    color:#990011;
-
+.nav-menu li a:not(.quote-btn)::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background: #990011;
+    transition: .35s;
 }
 
-.nav-menu a:hover::after{
-
-    width:100%;
-
+.nav-menu li a:not(.quote-btn):hover{
+    color: #990011;
 }
+
+.nav-menu li a:not(.quote-btn):hover::after{
+    width: 100%;
+}
+
+/*=========================
+GET QUOTE BUTTON
+=========================*/
 
 .quote-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    padding:10px 22px;
-    font-size:14px;
-    font-weight:600;
+    padding: 10px 22px;
 
-    color:white;
-    background:#e50815;
+    background: #e50815;
+    color: #ffffff !important;
 
-    border-radius:6px;
-    text-decoration:none;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
 
-    transition:0.3s;
+    border-radius: 6px;
+
+    transition: .3s;
 }
 
 .quote-btn:hover{
-    background:#b9000c;
-    color:white;
+    background: #b9000c;
+    color: #ffffff !important;
 }
 
-/* Hamburger */
+/* Remove underline from button */
+
+.quote-btn::after{
+    display: none !important;
+}
+
+/*=========================
+HAMBURGER
+=========================*/
 
 .menu-toggle{
-    display:none;
-    flex-direction:column;
-    cursor:pointer;
-    gap:5px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
 .menu-toggle span{
-    width:28px;
-    height:3px;
-    background:#111;
-    border-radius:10px;
-    transition:.3s;
+    width: 28px;
+    height: 3px;
+    background: #111;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+/*=========================
+MOBILE MENU
+=========================*/
+
+@media (max-width:991px){
+
+    .menu-toggle{
+        display: flex;
+    }
+
+    .nav-menu{
+        position: fixed;
+        top: 75px;
+        left: -100%;
+
+        width: 100%;
+        height: calc(100vh - 75px);
+
+        background: #fff;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 30px;
+        padding-top: 40px;
+
+        transition: .4s;
+    }
+
+    .nav-menu.active{
+        left: 0;
+    }
+
+    .quote-btn{
+        margin-top: 10px;
+    }
 }

@@ -162,32 +162,55 @@ margin-bottom:35px;
 
 }
 
-.service-overlay a{
+/*==========================
+SERVICE BUTTON
+===========================*/
 
-display:inline-block;
+.service-btn{
 
-background:white;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
 
-color:#990011;
+    width:240px;
+    height:60px;
 
-padding:18px 40px;
+    background:#ffffff;
+    color:#990011;
 
-border-radius:50px;
+    border-radius:50px;
+    text-decoration:none;
 
-font-weight:700;
+    font-size:20px;
+    font-weight:700;
 
-text-decoration:none;
+    transition:.35s;
+    white-space:nowrap;
 
-transition:.4s;
+}
+
+.service-btn i{
+
+    font-size:18px;
+    transition:.35s;
 
 }
 
-.service-overlay a:hover{
+.service-btn:hover{
 
-background:#990011;
+    background:#990011;
+    color:#ffffff;
 
-color:white;
-
-transform:translateY(-5px);
+    transform:translateY(-4px);
 
 }
+
+.service-btn:hover i{
+
+    transform:translateX(6px);
+
+}
+
+
+

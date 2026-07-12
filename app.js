@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
-
+const axios = require("axios");
 
 // 2. Create app
 const app = express();
@@ -44,24 +44,52 @@ app.post("/send-message", async (req,res)=>{
 
     } = req.body;
 
+try {
 
+    const token = req.body["cf-turnstile-response"];
+
+    const verification = await axios.post(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        new URLSearchParams({
+            secret: process.env.TURNSTILE_SECRET,
+            response: token,
+            remoteip: req.ip
+        }),
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }
+    );
+
+    if (!verification.data.success) {
+        return res.send("Security verification failed.");
+    }
 
     const transporter = nodemailer.createTransport({
-
-        host:"smtpout.secureserver.net",
-
-        port:465,
-
-        secure:true,
-
-        auth:{
-
+        host: "smtpout.secureserver.net",
+        port: 465,
+        secure: true,
+        auth: {
             user: process.env.EMAIL_USER,
-pass: process.env.EMAIL_PASS
-
+            pass: process.env.EMAIL_PASS
         }
-
     });
+
+    // send mail...
+
+    await transporter.sendMail(mailOptions);
+
+    res.render("pages/success");
+
+}
+catch(error){
+
+    console.log(error);
+
+    res.send("Unable to send enquiry.");
+
+}
 
 
 
@@ -123,4 +151,9 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`🚀 Server Running on Port ${PORT}`);
+});
+app.get("/privacy-policy", (req, res) => {
+    res.render("pages/privacy", {
+        title: "Privacy Policy | Brothers Light"
+    });
 });
