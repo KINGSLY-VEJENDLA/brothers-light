@@ -766,3 +766,74 @@ SMALL MOBILE (max-width:480px)
 }
 
 }
+
+/* =========================
+   WHY US RESPONSIVE
+========================= */
+
+@media (max-width: 992px){
+
+    .why-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:25px;
+    }
+
+}
+
+
+@media (max-width: 576px){
+
+    .why-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+
+    .why-card{
+        padding:25px 20px;
+    }
+
+}
+
+/* =========================
+   PROCESS RESPONSIVE
+========================= */
+
+
+@media (max-width:992px){
+
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:30px;
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    .process-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+
+    .process-card{
+        text-align:center;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+
+    .section-title p{
+        font-size:15px;
+        padding:0 15px;
+    }
+
+}
