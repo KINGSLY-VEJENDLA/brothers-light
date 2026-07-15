@@ -32,15 +32,11 @@ body{
     overflow-x:hidden;
 
 }
-
 .container{
-
     width:90%;
-
     max-width:1400px;
-
     margin:auto;
-
+    box-sizing:border-box;
 }
 
 section{
@@ -69,8 +65,8 @@ section{
         position:fixed;
         top:75px;
         left:-100%;
-        width:100%;
-        height:calc(100vh - 75px);
+        width:70%;
+        
         background:#fff;
         display:flex;
         flex-direction:column;
@@ -83,4 +79,15 @@ section{
     .nav-menu.active{
         left:0;
     }
+}
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+*{
+    max-width:100%;
+    box-sizing:border-box;
 }

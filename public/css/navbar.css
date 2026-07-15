@@ -13,6 +13,7 @@ NAVBAR
 }
 
 .nav-container{
+    position: relative;
     height: 75px;
     display: flex;
     justify-content: space-between;
@@ -122,41 +123,79 @@ HAMBURGER
     transition: .3s;
 }
 
-/*=========================
-MOBILE MENU
-=========================*/
+/*=========================*
+*MOBILE MENU*
+*=========================*/
 
 @media (max-width:991px){
 
     .menu-toggle{
-        display: flex;
+        display:flex;
+        z-index:1001;
     }
 
     .nav-menu{
-        position: fixed;
-        top: 75px;
-        left: -100%;
 
-        width: 100%;
-        height: calc(100vh - 75px);
+        position:absolute;
 
-        background: #fff;
+        top:80px;
+        right:15px;
 
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+        width:260px;
 
-        gap: 30px;
-        padding-top: 40px;
+        background:#fff;
 
-        transition: .4s;
+        border:1px solid rgba(0,0,0,.05);
+        border-radius:12px;
+
+        box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+        padding:20px;
+
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+
+        /* Hidden state */
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+
+        transform:translateY(-15px);
+
+        transition:
+            opacity .3s ease,
+            transform .3s ease,
+            visibility .3s;
     }
 
     .nav-menu.active{
-        left: 0;
+
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+
+        transform:translateY(0);
+
     }
 
     .quote-btn{
-        margin-top: 10px;
+
+        width:100%;
+        text-align:center;
+        margin-top:10px;
+
     }
+
+}
+
+/* Quote Button Hover */
+.quote-btn:hover{
+
+    background:#b9000c !important;
+
+    color:#ffffff !important;
+
+    border-color:#b9000c;
+
 }

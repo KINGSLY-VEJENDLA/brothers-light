@@ -238,24 +238,6 @@ MOBILE (max-width:768px)
 
 
 
-.hero-overlay{
-
-background:
-
-linear-gradient(
-
-90deg,
-
-rgba(0,0,0,.85),
-
-rgba(0,0,0,.65)
-
-);
-
-}
-
-
-
 .hero-content{
 
     padding:80px 20px;
@@ -460,11 +442,16 @@ rgba(0,0,0,.65)
 
 .service-btn{
 
-    width:180px;
+    width:160px;
+    height:48px;
 
-    height:50px;
+    font-size:15px;
+
+    gap:8px;
 
 }
+
+
 
 
 
@@ -621,6 +608,23 @@ rgba(0,0,0,.65)
 }
 
 
+.security-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.security-title{
+    width:100%;
+}
+
+.verified-badge{
+    width:100%;
+}
+
+.turnstile-wrapper{
+    padding:12px;
+}
+
 }
 
 
@@ -694,46 +698,44 @@ SMALL MOBILE (max-width:480px)
 
 }
 
-@media(max-width:991px){
 
-.menu-toggle{
-    display:flex;
-}
 
-.nav-menu{
-
-    position:fixed;
-    top:75px;
-    left:-100%;
-
-    width:100%;
-    height:calc(100vh - 75px);
-
-    background:#fff;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
-
-    gap:25px;
-
-    padding-top:40px;
-
-    transition:0.4s;
-
-}
-
-.nav-menu.active{
-
-    left:0;
-
-}
-
-}
 @media (max-width:991px){
 
-    .desktop-banner{
+    .nav-menu li{
+        width:100%;
+    }
+
+    .nav-menu li a{
+
+        display:block;
+
+        padding:14px 18px;
+
+        color:#222;
+
+        border-radius:10px;
+
+        transition:.3s;
+    }
+
+    .nav-menu li a:hover{
+
+        background:#f7f7f7;
+
+        color:#990011;
+    }
+
+    .quote-btn{
+
+        width:175px;
+
+        margin-top:10px;
+
+        text-align:center;
+    }
+
+      .desktop-banner{
         display:none;
     }
 
@@ -743,29 +745,9 @@ SMALL MOBILE (max-width:480px)
 
 }
 
-@media(max-width:768px){
 
-.turnstile-wrapper{
 
-    padding:15px;
 
-}
-
-.security-header{
-
-    font-size:18px;
-
-}
-
-}
-@media(max-width:768px){
-
-.footer-bottom{
-    flex-direction:column;
-    text-align:center;
-}
-
-}
 
 /* =========================
    WHY US RESPONSIVE
@@ -791,6 +773,60 @@ SMALL MOBILE (max-width:480px)
 
     .why-card{
         padding:25px 20px;
+    }
+
+}
+
+/* ===========================
+WHY US - MOBILE RESPONSIVE
+=========================== */
+
+@media (max-width:768px){
+
+    .why-us{
+        padding:80px 20px;
+    }
+
+    .why-title{
+        font-size:42px;
+        line-height:1.15;
+        word-break:break-word;
+        overflow-wrap:break-word;
+    }
+
+    .why-desc{
+        font-size:16px;
+        line-height:1.7;
+        margin-bottom:50px;
+        padding:0 10px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .why-card{
+        padding:30px 25px;
+    }
+
+    .icon{
+        width:70px;
+        height:70px;
+        margin-bottom:20px;
+    }
+
+    .icon i{
+        font-size:30px;
+    }
+
+    .why-card h3{
+        font-size:24px;
+    }
+
+    .why-card p{
+        font-size:15px;
+        line-height:1.7;
     }
 
 }
@@ -834,6 +870,72 @@ SMALL MOBILE (max-width:480px)
     .section-title p{
         font-size:15px;
         padding:0 15px;
+    }
+
+}
+
+@media (max-width:768px){
+
+.hero-overlay{
+
+    background:linear-gradient(
+180deg,
+rgba(255,255,255,.72) 0%,
+rgba(255,255,255,.48) 45%,
+rgba(255,255,255,.18) 100%
+);
+
+backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+.hero h1{
+color:#ffffff;
+text-shadow:0 4px 20px rgba(0,0,0,.35);
+}
+
+.hero p{
+color:#fffefe;
+font-weight: 1000;
+}
+
+.hero-tag{
+color:#990011;
+background:rgba(255,255,255,.75);
+}
+
+.hero-stat h2{
+    color:#f9f5f5;
+    text-shadow:0 4px 20px rgba(0,0,0,.35);
+
+}
+
+.hero-stat span{
+    color:#040404;
+    font-weight: 700;
+}
+
+    .experience-box{
+
+        width:170px;
+        padding:16px 18px;
+
+        bottom:175px;
+        right:10px;
+
+        border-radius:16px;
+    }
+
+    .experience-box h2{
+        font-size:18px;
+        line-height:1.1;
+        margin-bottom:6px;
+    }
+
+    .experience-box p{
+        font-size:12px;
+        line-height:1.4;
     }
 
 }

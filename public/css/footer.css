@@ -172,3 +172,22 @@
 .privacy-link:hover{
     color:#e50815;
 }
+
+.footer img{
+    max-width:220px;
+    width:100%;
+    height:auto;
+}
+
+.footer{
+    overflow:hidden;
+}
+
+@media(max-width:768px){
+
+.footer-bottom{
+    flex-direction:column;
+    text-align:center;
+}
+
+}
