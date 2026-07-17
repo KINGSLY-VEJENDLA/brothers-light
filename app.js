@@ -31,116 +31,77 @@ app.get("/", (req,res)=>{
 });
 
 
-// 7. CONTACT FORM ROUTE  👈 PLACE YOUR CODE HERE
+app.post("/send-message", async (req, res) => {
 
-app.post("/send-message", async (req,res)=>{
+    const { name, email, phone, message } = req.body;
 
+    try {
 
-    const {
-        name,
-        email,
-        phone,
-        message
+        // Verify Cloudflare Turnstile
+        const token = req.body["cf-turnstile-response"];
 
-    } = req.body;
+        if (!token) {
+            return res.status(400).send("Please complete the security verification.");
+        }
 
-try {
-
-    const token = req.body["cf-turnstile-response"];
-
-    const verification = await axios.post(
-        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-        new URLSearchParams({
-            secret: process.env.TURNSTILE_SECRET,
-            response: token,
-            remoteip: req.ip
-        }),
-        {
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+        const verification = await axios.post(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            new URLSearchParams({
+                secret: process.env.TURNSTILE_SECRET,
+                response: token,
+                remoteip: req.ip
+            }),
+            {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
             }
+        );
+
+        if (!verification.data.success) {
+            console.log(verification.data);
+            return res.status(400).send("Security verification failed.");
         }
-    );
 
-    if (!verification.data.success) {
-        return res.send("Security verification failed.");
-    }
+        // Create transporter
+        const transporter = nodemailer.createTransport({
+            host: "smtpout.secureserver.net",
+            port: 465,
+            secure: true,
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
 
-    const transporter = nodemailer.createTransport({
-        host: "smtpout.secureserver.net",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
+        // Email content
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
+            replyTo: email,
+            subject: "New Website Enquiry - Brothers Light",
+            html: `
+                <h2>New Client Enquiry</h2>
+                <hr>
+                <p><b>Name:</b> ${name}</p>
+                <p><b>Email:</b> ${email}</p>
+                <p><b>Phone:</b> ${phone}</p>
+                <p><b>Message:</b> ${message}</p>
+            `
+        };
 
-    // send mail...
-
-    await transporter.sendMail(mailOptions);
-
-    res.render("pages/success");
-
-}
-catch(error){
-
-    console.log(error);
-
-    res.send("Unable to send enquiry.");
-
-}
-
-
-
-    const mailOptions={
-
-        from:"info@brotherslight.in",
-
-        to:"info@brotherslight.in",
-
-        replyTo:email,
-
-        subject:"New Website Enquiry - Brothers Light",
-
-        html:`
-
-        <h2>New Client Enquiry</h2>
-
-        <hr>
-
-        <p><b>Name:</b> ${name}</p>
-
-        <p><b>Email:</b> ${email}</p>
-
-        <p><b>Phone:</b> ${phone}</p>
-
-        <p><b>Message:</b> ${message}</p>
-
-        `
-
-    };
-
-
-
-    try{
-
+        // Send email
         await transporter.sendMail(mailOptions);
-
 
         res.render("pages/success");
 
-    }
+    } catch (error) {
 
+        console.error("ERROR:", error.response?.data || error);
 
-    catch(error){
-
-        console.log(error);
-
-        res.send("Unable to send enquiry.");
+        res.status(500).send("Unable to send enquiry.");
 
     }
-
 
 });
 
