@@ -1,126 +1,152 @@
-/*=========================
+/*==================================
 PROCESS
-=========================*/
+===================================*/
 
 .process{
-
     padding:140px 0;
-
     background:#fff;
-
     position:relative;
-
 }
 
-.process-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:35px;
-
+.timeline{
     position:relative;
-
-    margin-top:80px;
-
+    width:100%;
+    max-width:1100px;
+    margin:90px auto 0;
 }
 
-.process-line{
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:100%;
+    background:#990011;
+    transform:translateX(-50%);
+}
+
+.timeline-item{
+    position:relative;
+    width:50%;
+    padding:25px 60px;
+    margin-bottom:70px;
+}
+
+.timeline-item.left{
+    left:0;
+    text-align:right;
+}
+
+.timeline-item.right{
+    left:50%;
+}
+
+.timeline-icon{
 
     position:absolute;
 
-    left:50%;
+    top:40px;
 
-    transform:translateX(-50%);
+    width:72px;
+    height:72px;
 
-    margin-top:155px;
+    background:#fff;
 
-    width:70%;
-
-    height:4px;
-
-    background:#ececec;
-
-}
-
-.process-card{
-
-    background:white;
-
-    padding:45px 35px;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-
-    transition:.4s;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.process-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:0 25px 50px rgba(0,0,0,.15);
-
-}
-
-.process-number{
-
-    width:65px;
-
-    height:65px;
-
-    margin:auto;
+    border:4px solid #990011;
 
     border-radius:50%;
 
-    background:#e50815;
-
-    color:white;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    font-size:24px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+    z-index:2;
+
+    transition:.4s;
+
+}
+
+.timeline-item.left .timeline-icon{
+    right:-36px;
+}
+
+.timeline-item.right .timeline-icon{
+    left:-36px;
+}
+
+.timeline-icon i{
+    font-size:30px;
+    color:#990011;
+}
+
+.timeline-content{
+
+    position:relative;
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+    overflow:hidden;
+}
+
+.timeline-content::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:5px;
+    height:100%;
+
+    background:#990011;
+
+}
+
+.timeline-number{
+
+    position:absolute;
+
+    top:-18px;
+    right:25px;
+
+    font-size:90px;
 
     font-weight:700;
+
+    color:rgba(153,0,17,.08);
 
     font-family:Poppins;
 
 }
 
-.process-icon{
-
-    font-size:42px;
-
-    color:#990011;
-
-    margin:28px 0 20px;
-
-    transition:.4s;
-
+/* Left timeline cards */
+.timeline-item.left .timeline-number{
+    left:25px;
+    right:auto;
 }
 
-.process-card:hover .process-icon{
-
-    transform:rotate(12deg) scale(1.15);
-
+/* Right timeline cards */
+.timeline-item.right .timeline-number{
+    right:25px;
+    left:auto;
 }
 
-.process-card h3{
+.timeline-content h3{
 
-    font-size:26px;
+    font-size:28px;
 
     margin-bottom:15px;
 
@@ -128,10 +154,142 @@ PROCESS
 
 }
 
-.process-card p{
+.timeline-content p{
 
     color:#666;
 
-    line-height:1.8;
+    line-height:1.9;
+
+    font-size:16px;
+
+}
+
+.timeline-item:hover .timeline-content{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 30px 60px rgba(0,0,0,.15);
+
+}
+
+.timeline-item:hover .timeline-icon{
+
+    background:#990011;
+
+    transform:scale(1.12) rotate(360deg);
+
+}
+
+.timeline-item:hover .timeline-icon i{
+    color:#fff;
+}
+
+/*=========================
+Responsive
+=========================*/
+
+@media(max-width:991px){
+
+.timeline::before{
+
+    left:35px;
+
+}
+
+.timeline-item{
+
+    width:100%;
+
+    left:0 !important;
+
+    padding-left:90px;
+
+    padding-right:20px;
+
+    text-align:left;
+
+}
+
+.timeline-item.left{
+
+    text-align:left;
+
+}
+
+.timeline-icon{
+
+    left:0 !important;
+
+    right:auto;
+
+}
+
+.timeline-number{
+
+    font-size:65px;
+
+}
+
+
+.timeline-content{
+
+    padding:30px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.process{
+
+    padding:80px 0;
+
+}
+
+.timeline-item{
+
+    padding-left:75px;
+
+}
+
+.timeline-icon{
+
+    width:58px;
+    height:58px;
+
+}
+
+.timeline-icon i{
+
+    font-size:22px;
+
+}
+
+.timeline-content{
+
+    padding:22px;
+
+}
+
+.timeline-content h3{
+
+    font-size:22px;
+
+}
+
+.timeline-content p{
+
+    font-size:15px;
+
+}
+
+.timeline-number{
+
+    font-size:50px;
+
+}
+
+
 
 }

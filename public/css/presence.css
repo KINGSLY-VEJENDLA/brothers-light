@@ -1,0 +1,283 @@
+/*==============================
+GLOBAL PRESENCE
+==============================*/
+
+.presence{
+
+    padding:140px 0;
+
+    background:#fff;
+
+}
+
+.presence-wrapper{
+
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:1.4fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+/* MAP */
+
+.presence-map{
+
+    position:relative;
+
+    background:#fcf6f5;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.08);
+
+}
+
+.presence-map img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+/* Pins */
+
+.pin{
+
+    position:absolute;
+
+    text-align:center;
+
+    animation:pulse 2s infinite;
+
+}
+
+.pin i{
+
+    font-size:32px;
+
+    color:#990011;
+
+}
+
+.pin span{
+
+    display:block;
+
+    margin-top:8px;
+
+    background:#990011;
+
+    color:#fff;
+
+    padding:6px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+}
+
+
+
+/* Cards */
+
+.presence-cards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.country-card{
+
+    background:#FCF6F5;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.country-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 50px rgba(153,0,17,.12);
+
+}
+
+.flag{
+
+    font-size:45px;
+
+    margin-bottom:15px;
+
+}
+
+.country-card h3{
+
+    font-size:30px;
+
+    margin-bottom:5px;
+
+}
+
+.country-card h4{
+
+    color:#990011;
+
+    margin-bottom:25px;
+
+}
+
+.country-card ul{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.country-card li{
+
+    margin-bottom:15px;
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+
+}
+
+.country-card i{
+
+    color:#990011;
+
+}
+
+/* Animations */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes dash{
+
+    from{
+
+        stroke-dashoffset:100;
+
+    }
+
+    to{
+
+        stroke-dashoffset:0;
+
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+.presence-wrapper{
+
+    grid-template-columns:1fr;
+
+}
+
+.presence-map{
+
+    order:2;
+
+}
+
+.presence-cards{
+
+    order:1;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.presence{
+
+    padding:90px 20px;
+
+}
+
+.country-card{
+
+    padding:25px;
+
+}
+
+.country-card h3{
+
+    font-size:24px;
+
+}
+
+.pin i{
+
+    font-size:24px;
+
+}
+
+.pin span{
+
+    font-size:11px;
+
+    padding:4px 10px;
+
+}
+
+}
+
+/* Arkansas (USA) */
+.usa{
+    left: 20%;
+    top: 39%;
+}
+
+/* Hyderabad (India) */
+.india{
+    left: 61%;
+    top: 50%;
+}

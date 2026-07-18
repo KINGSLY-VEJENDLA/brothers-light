@@ -749,114 +749,79 @@ SMALL MOBILE (max-width:480px)
 
 
 
-/* =========================
-   WHY US RESPONSIVE
-========================= */
+@media(max-width:991px){
 
-@media (max-width: 992px){
+.why-layout{
+    grid-template-columns:1fr;
+}
 
-    .why-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:25px;
-    }
+.large{
+    min-height:auto;
+}
+
+.right-grid{
+    width:100%;
+}
+
+.bottom-grid{
+    grid-template-columns:1fr;
+}
+
+.large h3{
+    font-size:36px;
+}
+
+.small h3{
+    font-size:28px;
+}
 
 }
 
+@media(max-width:992px){
 
-@media (max-width: 576px){
+.process-timeline{
 
-    .why-grid{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-
-    .why-card{
-        padding:25px 20px;
-    }
+    grid-template-columns:repeat(2,1fr);
 
 }
 
-/* ===========================
-WHY US - MOBILE RESPONSIVE
-=========================== */
+.process-timeline::before{
 
-@media (max-width:768px){
-
-    .why-us{
-        padding:80px 20px;
-    }
-
-    .why-title{
-        font-size:42px;
-        line-height:1.15;
-        word-break:break-word;
-        overflow-wrap:break-word;
-    }
-
-    .why-desc{
-        font-size:16px;
-        line-height:1.7;
-        margin-bottom:50px;
-        padding:0 10px;
-    }
-
-    .why-grid{
-        grid-template-columns:1fr;
-        gap:25px;
-    }
-
-    .why-card{
-        padding:30px 25px;
-    }
-
-    .icon{
-        width:70px;
-        height:70px;
-        margin-bottom:20px;
-    }
-
-    .icon i{
-        font-size:30px;
-    }
-
-    .why-card h3{
-        font-size:24px;
-    }
-
-    .why-card p{
-        font-size:15px;
-        line-height:1.7;
-    }
+    display:none;
 
 }
 
-/* =========================
-   PROCESS RESPONSIVE
-========================= */
+}
 
+@media(max-width:768px){
 
-@media (max-width:992px){
+.process-timeline{
 
-    .process-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:30px;
-    }
+    grid-template-columns:1fr;
+
+    gap:70px;
 
 }
 
+.process-step{
 
-@media (max-width:576px){
+    padding:35px 25px;
 
-    .process-grid{
-        grid-template-columns:1fr;
-        gap:25px;
-    }
+}
 
+.step-circle{
 
-    .process-card{
-        text-align:center;
-    }
+    width:75px;
+    height:75px;
+
+    font-size:28px;
+}
+
+.process-step h3{
+
+    font-size:24px;
+
+}
 
 }
 
@@ -912,7 +877,7 @@ background:rgba(255,255,255,.75);
 }
 
 .hero-stat span{
-    color:#040404;
+    color:#fbf7f7;
     font-weight: 700;
 }
 

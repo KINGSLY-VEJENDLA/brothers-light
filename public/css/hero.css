@@ -92,9 +92,11 @@ HERO
 
     font-weight:700;
 
-    margin-bottom:28px;
-
-    text-shadow:0 5px 25px #00000059;
+    margin-bottom:25px;
+    color: transparent;
+background: linear-gradient(120deg, #ff2d55, #ff6ec7, #5b8cff);
+-webkit-background-clip: text;
+background-clip: text;
 
 }
 
@@ -106,7 +108,10 @@ HERO
 
     line-height:1.9;
 
-    color:#b1a1a1;
+    color: transparent;
+background: linear-gradient(90deg, #ef4444, #ec4899, #60a5fa);
+-webkit-background-clip: text;
+background-clip: text;
 
     max-width:620px;
 
@@ -472,15 +477,21 @@ Responsive
     }
 
     .hero-content{
-        color:#202020;
+        color:#fdf9f9;
     }
 
     .hero h1{
-        color:#202020;
+        color: transparent;
+background: linear-gradient(120deg, #ff2d55, #ff6ec7, #5b8cff);
+-webkit-background-clip: text;
+background-clip: text;
     }
 
     .hero p{
-        color:#555;
+         color: transparent;
+background: linear-gradient(90deg, #ef4444, #ec4899, #60a5fa);
+-webkit-background-clip: text;
+background-clip: text;
     }
 
 }
