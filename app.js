@@ -58,13 +58,10 @@ app.post("/send-message", async (req, res) => {
             }
         );
 
-        console.log("Turnstile verification:", verification.data);
+        console.log("Turnstile:", verification.data);
 
 if (!verification.data.success) {
-    return res.status(400).json({
-        success: verification.data.success,
-        errorCodes: verification.data["error-codes"]
-    });
+    return res.status(400).json(verification.data);
 }
 
         // Create transporter
