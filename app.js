@@ -70,15 +70,14 @@ app.post("/send-message", async (req, res) => {
     console.log("4. Creating transporter...");
 
     const transporter = nodemailer.createTransport({
-        host: "smtpout.secureserver.net",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
-
+    host: "smtp.titan.email",
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
     console.log("5. Verifying SMTP...");
     await transporter.verify();
     console.log("6. SMTP Connected");
