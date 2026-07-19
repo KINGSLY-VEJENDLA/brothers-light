@@ -97,11 +97,17 @@ app.post("/send-message", async (req, res) => {
 
     } catch (error) {
 
-        console.error("ERROR:", error.response?.data || error);
+    console.error("========== ERROR ==========");
 
-        res.status(500).send("Unable to send enquiry.");
+    console.error(error);
 
+    if (error.response) {
+        console.error(error.response.data);
     }
+
+    res.status(500).send(error.message);
+
+}
 
 });
 
