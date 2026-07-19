@@ -58,10 +58,14 @@ app.post("/send-message", async (req, res) => {
             }
         );
 
-        if (!verification.data.success) {
-            console.log(verification.data);
-            return res.status(400).send("Security verification failed.");
-        }
+        console.log("Turnstile verification:", verification.data);
+
+if (!verification.data.success) {
+    return res.status(400).json({
+        success: verification.data.success,
+        errorCodes: verification.data["error-codes"]
+    });
+}
 
         // Create transporter
         const transporter = nodemailer.createTransport({
