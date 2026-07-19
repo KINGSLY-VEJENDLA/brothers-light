@@ -69,14 +69,21 @@ app.post("/send-message", async (req, res) => {
 
     console.log("4. Creating transporter...");
 
-    const transporter = nodemailer.createTransport({
+   const transporter = nodemailer.createTransport({
     host: "smtp.titan.email",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false, // STARTTLS
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    }
+    },
+    requireTLS: true,
+    tls: {
+        minVersion: "TLSv1.2"
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000
 });
     console.log("5. Verifying SMTP...");
     await transporter.verify();
