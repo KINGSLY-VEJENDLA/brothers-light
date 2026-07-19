@@ -37,69 +37,77 @@ app.post("/send-message", async (req, res) => {
 
     try {
 
-        // Verify Cloudflare Turnstile
-        const token = req.body["cf-turnstile-response"];
+    console.log("1. Form received");
 
-        if (!token) {
-            return res.status(400).send("Please complete the security verification.");
+    const token = req.body["cf-turnstile-response"];
+
+    if (!token) {
+        return res.status(400).send("Please complete the security verification.");
+    }
+
+    console.log("2. Verifying Turnstile...");
+
+    const verification = await axios.post(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        new URLSearchParams({
+            secret: process.env.TURNSTILE_SECRET,
+            response: token,
+            remoteip: req.ip
+        }),
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
         }
+    );
 
-        const verification = await axios.post(
-            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-            new URLSearchParams({
-                secret: process.env.TURNSTILE_SECRET,
-                response: token,
-                remoteip: req.ip
-            }),
-            {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                }
-            }
-        );
+    console.log("3. Turnstile:", verification.data);
 
-        console.log("Turnstile:", verification.data);
+    if (!verification.data.success) {
+        return res.status(400).json(verification.data);
+    }
 
-if (!verification.data.success) {
-    return res.status(400).json(verification.data);
-}
+    console.log("4. Creating transporter...");
 
-        // Create transporter
-        const transporter = nodemailer.createTransport({
-            host: "smtpout.secureserver.net",
-            port: 465,
-            secure: true,
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
+    const transporter = nodemailer.createTransport({
+        host: "smtpout.secureserver.net",
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    });
 
-        // Email content
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            replyTo: email,
-            subject: "New Website Enquiry - Brothers Light",
-            html: `
-                <h2>New Client Enquiry</h2>
-                <hr>
-                <p><b>Name:</b> ${name}</p>
-                <p><b>Email:</b> ${email}</p>
-                <p><b>Phone:</b> ${phone}</p>
-                <p><b>Message:</b> ${message}</p>
-            `
-        };
+    console.log("5. Verifying SMTP...");
+    await transporter.verify();
+    console.log("6. SMTP Connected");
 
-        // Send email
-        await transporter.sendMail(mailOptions);
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        replyTo: email,
+        subject: "New Website Enquiry - Brothers Light",
+        html: `
+            <h2>New Client Enquiry</h2>
+            <hr>
+            <p><b>Name:</b> ${name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Phone:</b> ${phone}</p>
+            <p><b>Message:</b> ${message}</p>
+        `
+    };
 
-        res.render("pages/success");
+    console.log("7. Sending email...");
+    await transporter.sendMail(mailOptions);
 
-    } catch (error) {
+    console.log("8. Email sent successfully");
+
+    res.render("pages/success");
+
+} catch (error) {
 
     console.error("========== ERROR ==========");
-
     console.error(error);
 
     if (error.response) {
@@ -107,7 +115,6 @@ if (!verification.data.success) {
     }
 
     res.status(500).send(error.message);
-
 }
 
 });
