@@ -8,6 +8,19 @@ const axios = require("axios");
 // 2. Create app
 const app = express();
 
+const transporter = nodemailer.createTransport({
+    host: "smtpout.secureserver.net",
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000,
+});
 
 // 3. Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -34,6 +47,9 @@ app.get("/", (req,res)=>{
 app.post("/send-message", async (req, res) => {
 
     const { name, email, phone, message } = req.body;
+    if (!name || !email || !phone || !message) {
+    return res.status(400).send("All fields are required.");
+}
 
     try {
 
@@ -67,21 +83,7 @@ app.post("/send-message", async (req, res) => {
         return res.status(400).json(verification.data);
     }
 
-    console.log("4. Creating transporter...");
-
-  const transporter = nodemailer.createTransport({
-  host: "smtpout.secureserver.net",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
-    console.log("5. Verifying SMTP...");
     
-    console.log("6. SMTP Connected");
 
     const mailOptions = {
         from: `"Brothers Light" <${process.env.EMAIL_USER}>`,
@@ -132,20 +134,9 @@ app.post("/send-message", async (req, res) => {
         console.error(error.response.data);
     }
 
-    res.status(500).send(error.message);
+    return res.status(500).send("Something went wrong. Please try again.");
 }
 
-});
-
-const transporter = nodemailer.createTransport({
-    host: "smtpout.secureserver.net",
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
 });
 
 
