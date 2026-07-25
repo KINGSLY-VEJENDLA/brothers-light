@@ -69,28 +69,22 @@ app.post("/send-message", async (req, res) => {
 
     console.log("4. Creating transporter...");
 
-   const transporter = nodemailer.createTransport({
-    host: "smtp.titan.email",
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
+  const transporter = nodemailer.createTransport({
+  host: "smtpout.secureserver.net",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
-await transporter.verify();
-console.log("SMTP Connected");
     console.log("5. Verifying SMTP...");
-    await transporter.verify();
+    
     console.log("6. SMTP Connected");
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: `"Brothers Light" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER,
         replyTo: email,
         subject: "New Website Enquiry - Brothers Light",
@@ -107,9 +101,27 @@ console.log("SMTP Connected");
     console.log("7. Sending email...");
     await transporter.sendMail(mailOptions);
 
+    await transporter.sendMail({
+    from: `"Brothers Light" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: "We've received your enquiry",
+    html: `
+        <h2>Thank You!</h2>
+        <p>Dear ${name},</p>
+
+        <p>Thank you for contacting Brothers Light.</p>
+
+        <p>We have received your enquiry and will get back to you within 24 hours.</p>
+
+        <br>
+
+        <b>Brothers Light</b>
+    `
+});
+
     console.log("8. Email sent successfully");
 
-    res.render("pages/success");
+    return res.render("pages/success");
 
 } catch (error) {
 
@@ -123,6 +135,17 @@ console.log("SMTP Connected");
     res.status(500).send(error.message);
 }
 
+});
+
+const transporter = nodemailer.createTransport({
+    host: "smtpout.secureserver.net",
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
 });
 
 
